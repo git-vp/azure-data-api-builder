@@ -16,7 +16,7 @@
 6. Login to SQL DB using the above username and password
 	
 7. Run the following SQL script, that will create Books, Authors and BooksAuthors tables
-    [SQL script](https://github.com/Azure/data-api-builder/blob/main/samples/getting-started/azure-sql-db/library.azure-sql.sql)
+    [SQL script](https://github.com/git-vp/azure-data-api-builder/blob/main/books-authors-sql.sql)
 		
 8. Extract the connection string of the SQL server:
     `az sql db show-connection-string --client ado.net --name sqldb-books --server dab-demo-sql-vp --output tsv`
