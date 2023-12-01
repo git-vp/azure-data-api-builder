@@ -1,7 +1,11 @@
-# Steps for Running Azure Data API Builder (DAB)
+# How to Run Azure Data API Builder (DAB) in various Hosting Environments
 [Azure Data API Builder](https://learn.microsoft.com/en-us/azure/data-api-builder/overview-to-data-api-builder?tabs=azure-sql) provides an ability to auto-generate APIs to expose data in database like MS SQL.
 
-This repo provides step-by-step instructions to run Azure Data API Builder in various environments, like running on a VM, Azure Container Instance, Docker etc
+This repo provides step-by-step instructions to run Azure Data API Builder in various environments like:
+* Local windows machine
+* Docker Desktop
+* Azure Container Instance
+* Azure Kubernetes Service
 
 ## Run DAB in a Local Windows Machine
 ### Install DAB
@@ -25,31 +29,6 @@ This repo provides step-by-step instructions to run Azure Data API Builder in va
     `dab start --verbose --no-https-redirect`
     `Note:` without --no-https-redirect, DAB will throw 307 (Redirect) error
 
-## Test APIs
-### Test APIs in Browser
-1. Open a browser and enter `http://localhost:5000/api/Book`. This should show all the books.
-2. Enter `http://localhost:5000/api/Author` in the browser. This should show all the authors.
-
-### Test APIs in POSTMAN
-1. To retrieve all books in POSTMAN using REST API:
-     Method: `GET`
-     URL: `http://localhost:5000/api/Book`
-2. To retrieve all authors in POSTMAN using REST API:
-     Method: `GET`
-     URL: `http://localhost:5000/api/Author`
-3. To retrieve first 5 books using GraphQL:
-     URL: `http://localhost:5000/api/Author`
-     Query:
-     ```
-      {
-        books(first: 5, orderBy: { title: DESC }) {
-          items {
-            id
-            title
-          }
-        }
-      }
-     ```
 
 
 
