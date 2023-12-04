@@ -1,8 +1,10 @@
 ### Generate DAB Configuration File
-1. Create a configuration file for DAB
+1. Get SQL connection string from: [SQL Connection String](https://github.com/git-vp/azure-data-api-builder/blob/main/install-sql-db.md)
+   
+2. Create a configuration file for DAB
     `dab init --database-type "mssql" --connection-string "<replace-connection-string-from-above>" --host-mode "Development"`
 		
-2. The above command should generate a DAB configuration file such as below. The default configuration file name would be: `dab-config.json`
+3. The above command should generate a DAB configuration file such as below. The default configuration file name would be: `dab-config.json`
 <details>
   <summary>Click here</summary>
   
@@ -44,7 +46,7 @@
 
 `Note:` When DAB is run locally, authentication can be set to either StaticWebApps or Simulator mode
 
-3. 	To expose specific DB entities as APIs, add entity information to the `dab-config.json` [See additional details here](https://learn.microsoft.com/en-us/azure/data-api-builder/get-started/get-started-azure-sql#add-book-and-author-entities)
+4. 	To expose specific DB entities as APIs, add entity information to the `dab-config.json` [See additional details here](https://learn.microsoft.com/en-us/azure/data-api-builder/get-started/get-started-azure-sql#add-book-and-author-entities)
 
     Add Book entity to dab-config.json:
 	`dab add Author --source dbo.authors --permissions "anonymous:*"`
@@ -52,7 +54,7 @@
     Author entity to dab-config.json
     `dab add Book--source dbo.books--permissions "anonymous:*"`
 
-4. The final dab-config.json :
+5. The final dab-config.json :
 <details>
   <summary>Click here</summary>
   
