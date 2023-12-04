@@ -159,4 +159,4 @@
 ```
 </details>
 
-8. Make a copy of this `dab-config.json` as `dab-config-books-simulator-auth.json`. This file is used to run in DAB in AKS later.
+8. Make a copy of this `dab-config.json` as `dab-config-books-simulator-auth.json`. The DAB config file - `dab-config-books-simulator-auth.json` is used to run DAB in Docker and AKS later.
