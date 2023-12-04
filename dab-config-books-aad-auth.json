@@ -1,0 +1,100 @@
+{
+  "$schema": "https://github.com/Azure/data-api-builder/releases/download/v0.9.7/dab.draft.schema.json",
+  "data-source": {
+    "database-type": "mssql",
+    "connection-string": "Server=tcp:<sqlserver-name>.database.windows.net,1433;Initial Catalog=sqldb-books;Persist Security Info=False;User ID=<username>;Password=<password>;MultipleActiveResultSets=False;Encrypt=true;TrustServerCertificate=True;Connection Timeout=30;",
+    "options": {
+      "set-session-context": false
+    }
+  },
+  "runtime": {
+    "rest": {
+      "enabled": true,
+      "path": "/api",
+      "request-body-strict": true
+    },
+    "graphql": {
+      "enabled": true,
+      "path": "/graphql",
+      "allow-introspection": true
+    },
+    "host": {
+      "mode": "development",
+      "cors": {
+        "origins": [],
+        "allow-credentials": false
+      },
+      "authentication": {
+        "provider": "AzureAD",
+        "jwt": {
+          "audience": "Replace with Application (client) ID from Entra ID App registration",
+          "issuer": "https://login.microsoftonline.com/<replace-with-tenant-id>/v2.0"
+        }
+      }
+    }
+  },
+  "entities": {
+    "Author": {
+      "source": {
+        "object": "dbo.authors",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Author",
+          "plural": "Authors"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "contributor",
+          "actions": [
+            "read",
+            "create"
+          ]
+        },
+        {
+          "role": "editor",
+          "actions": [
+            "*"
+          ]
+        }
+      ]
+    },
+    "Book": {
+      "source": {
+        "object": "dbo.books",
+        "type": "table"
+      },
+      "graphql": {
+        "enabled": true,
+        "type": {
+          "singular": "Book",
+          "plural": "Books"
+        }
+      },
+      "rest": {
+        "enabled": true
+      },
+      "permissions": [
+        {
+          "role": "contributor",
+          "actions": [
+            "read",
+            "create"
+          ]
+        },
+        {
+          "role": "editor",
+          "actions": [
+            "*"
+          ]
+        }
+      ]
+    }
+  }
+}
