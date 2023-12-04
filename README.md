@@ -16,6 +16,9 @@ This repo provides step-by-step instructions to run Azure Data API Builder in va
 ## Run DAB in Azure Container Instance
 * [Instructions for Running DAB in ACI](https://github.com/git-vp/azure-data-api-builder/blob/main/run-dab-in-aci.md)
 
+## Run DAB in Azure Kubernetes Service
+* [Instructions for Running DAB in AKS](https://github.com/git-vp/azure-data-api-builder/blob/main/run-dab-in-aks.md)
+
 ## Test DAB
 * [Instructions for Testing DAB DB Endpoints](https://github.com/git-vp/azure-data-api-builder/blob/main/test-dab.md)
 
