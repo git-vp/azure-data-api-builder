@@ -7,7 +7,7 @@
    * Should you enable GraphQL endpoints
    * Authentication and authorisation model to be used by DAB to make API available
   
-2. By default, this DAB configuration file is available as: dab-config.json. DAB configuration file can be named whatever you like. If it is named different to dab-config.json then it should be explicitly passed.
+2. By default, this DAB configuration file is available as: `dab-config.json`. DAB configuration file can be named whatever you like. If it is named different to `dab-config.json` then it should be explicitly passed.
   
 3. Get SQL connection string from: [SQL Connection String](https://github.com/git-vp/azure-data-api-builder/blob/main/install-sql-db.md)
    
@@ -158,3 +158,5 @@
     }
 ```
 </details>
+
+8. Make a copy of this `dab-config.json` as `dab-config-books-simulator-auth.json`. This file is used to run in DAB in AKS later.
