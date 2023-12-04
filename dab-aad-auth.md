@@ -51,17 +51,7 @@
     ![image](https://github.com/git-vp/azure-data-api-builder/assets/25417872/3fee4009-ed71-4c54-bd3c-207feb99d73a)
 
 
-11. To retrieve API bearer token:
-
-    `az account get-access-token --scope api://<dab-entraid-app-reg-guid>/endpoint.access --query "accessToken" --tenant <entraid-tenant-id> -o tsv`
-
-12. The above command may prompt the user to login at:
-
-    `az login --scope api://<dab-entraid-app-reg-guid>/Endpoint.Access --tenant <tenant-name>.onmicrosoft.com`
-
-13. To send POSTMAN requests, include the following headers
-    * `AUTHORIZATION Type = Bearer, Value = token given from the above step`
-    * `X-MS-API-ROLE = editor or contributor roles`
+11. For details on retrieving bearer token from Entra ID Auth, refer to [Retrieve Bearer Token](https://github.com/git-vp/azure-data-api-builder/blob/main/test-dab.md) 
 
 
 `
