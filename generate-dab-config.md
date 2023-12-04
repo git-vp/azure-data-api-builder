@@ -1,10 +1,21 @@
 ### Generate DAB Configuration File
-1. Get SQL connection string from: [SQL Connection String](https://github.com/git-vp/azure-data-api-builder/blob/main/install-sql-db.md)
+1. DAB configuration file is used to inform DAB of the following things:
+   * What type of database to use?
+   * Database connection string for the DAB to connect to underlying database
+   * Database elements (such as entities, attributes etc) that can be extracted using an API
+   * Should you enable REST endpoints
+   * Should you enable GraphQL endpoints
+   * Authentication and authorisation model to be used by DAB to make API available
+  
+2. By default, this DAB configuration file is available as: dab-config.json. DAB configuration file can be named whatever you like. If it is named different to dab-config.json then it should be explicitly passed.
+  
+3. Get SQL connection string from: [SQL Connection String](https://github.com/git-vp/azure-data-api-builder/blob/main/install-sql-db.md)
    
-2. Create a configuration file for DAB
+4. Create a configuration file for DAB
+   
     `dab init --database-type "mssql" --connection-string "<replace-connection-string-from-above>" --host-mode "Development"`
 		
-3. The above command should generate a DAB configuration file such as below. The default configuration file name would be: `dab-config.json`
+5. The above command should generate a default `dab-config.json` DAB configuration file, such as the one below:
 <details>
   <summary>Click here</summary>
   
@@ -46,7 +57,7 @@
 
 `Note:` When DAB is run locally, authentication can be set to either StaticWebApps or Simulator mode
 
-4. 	To expose specific DB entities as APIs, add entity information to the `dab-config.json` [See additional details here](https://learn.microsoft.com/en-us/azure/data-api-builder/get-started/get-started-azure-sql#add-book-and-author-entities)
+6. 	To expose specific DB entities as APIs, add entity information to the `dab-config.json` [See additional details here](https://learn.microsoft.com/en-us/azure/data-api-builder/get-started/get-started-azure-sql#add-book-and-author-entities)
 
     Add Book entity to dab-config.json:
 	`dab add Author --source dbo.authors --permissions "anonymous:*"`
@@ -54,7 +65,7 @@
     Author entity to dab-config.json
     `dab add Book--source dbo.books--permissions "anonymous:*"`
 
-5. The final dab-config.json :
+7. The final dab-config.json :
 <details>
   <summary>Click here</summary>
   
