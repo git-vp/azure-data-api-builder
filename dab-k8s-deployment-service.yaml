@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-api-builder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-api-builder
+  template:
+    metadata:
+      labels:
+        app: data-api-builder
+    spec:
+      containers:
+      - name: data-api-builder
+        image: mcr.microsoft.com/azure-databases/data-api-builder:latest
+        ports:
+        - containerPort: 5000
+        command: ["/bin/sh", "-c"]
+        args: ["dotnet Azure.DataApiBuilder.Service.dll --ConfigFileName /App/configs/dab-config-books-simulator-auth.json"]
+        volumeMounts:
+        - name: config-volume
+          mountPath: /App/configs
+      volumes:
+      - name: config-volume
+        configMap:
+          name: dab-config
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-api-builder
+spec:
+  selector:
+    app: data-api-builder
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: LoadBalancer
