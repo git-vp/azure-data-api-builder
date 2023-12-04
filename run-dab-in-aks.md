@@ -1,9 +1,14 @@
 # Run DAB in Azure Kubernetes Service (AKS)
 See below for instructions to run DAB in Azure Kubernetes Service (AKS)
 
-## Pre-requisites
+## Create AKS Cluster
 1. Create 1-node AKS cluster
+
+   `az aks create --location westeurope --name wth-aks-cluster --node-count 1 --no-ssh-key --resource-group whatthehack-rg --zones 1 --enable-managed-identity`
+   
 2. Get AKS cluster credentials
+
+   `az aks get-credentials --resource-group whatthehack-rg --name wth-aks-cluster`
 
 ## Install SQL Database
 * [Instructions for Installing Azure SQL Database](https://github.com/git-vp/azure-data-api-builder/blob/main/install-sql-db.md)
@@ -22,54 +27,8 @@ See below for instructions to run DAB in Azure Kubernetes Service (AKS)
 
    `kubectl describe cm dab-config`
    
-4. Create `dab-k8s-deployment-service.yaml manifests`
+4. Create [dab-k8s-deployment-service.yaml](https://github.com/git-vp/azure-data-api-builder/edit/main/dab-k8s-deployment-service.yaml) manifests
 
-   ```yaml
-
-    apiVersion: apps/v1
-		kind: Deployment
-		metadata:
-		  name: data-api-builder
-		spec:
-		  replicas: 1
-		  selector:
-		    matchLabels:
-		      app: data-api-builder
-		  template:
-		    metadata:
-		      labels:
-		        app: data-api-builder
-		    spec:
-		      containers:
-		      - name: data-api-builder
-		        image: mcr.microsoft.com/azure-databases/data-api-builder:latest
-		        ports:
-		        - containerPort: 5000
-		        command: ["/bin/sh", "-c"]
-		        args: ["dotnet Azure.DataApiBuilder.Service.dll --ConfigFileName /App/configs/dab-config-books-simulator-auth.json"]
-		        volumeMounts:
-		        - name: config-volume
-		          mountPath: /App/configs
-		      volumes:
-		      - name: config-volume
-		        configMap:
-		          name: dab-config
-    ---
-   
-		apiVersion: v1
-		kind: Service
-		metadata:
-		  name: data-api-builder
-		spec:
-		  selector:
-		    app: data-api-builder
-		  ports:
-		    - protocol: TCP
-		      port: 80
-		      targetPort: 5000
-		  type: LoadBalancer
-   
-   ```
 6. In the above deployment manifest, dab-config-books-simulator-auth.json file is made available to the pod at /App/config directory
 7. The service listens on port 80, forwards the traffic to port 5000 on the pod, and the container in the pod listens on port 5000
 8. Create the k8s deployment and service objects
