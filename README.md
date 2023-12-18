@@ -3,6 +3,23 @@
 
 Azure Data API Builder is open source and can be hosted on any platform.
 
+## Authentication and Authorization
+Clients using API provided by Data API Builder can use the following authentication methods to authenticate the client with Data API builder:
+* Azure Static Web Apps
+* Azure AD - provides a JWT token which the client will supply in the AUTHORIZATION Bearer token HTTP header to identify the client.
+  
+In this article, I am going to focus on Azure AD.
+
+Once the client calling the API is authenticated, actions performed by the client is authorised by specifying the role assigned to the client in X-MS-API-ROLE HTTP header.
+
+In summary, provide the following values in HTTP header:
+* To authenticate - specify JWT bearer token in AUTHORIZATION Bearer token
+* To authorize - specify role in X-MS-API-ROLE
+
+![Data API Builder](https://github.com/git-vp/azure-data-api-builder/assets/25417872/142ce6ee-ba93-4f21-ad82-a1b9e6137315)
+
+
+## Hosting Data API Builder
 This repo provides step-by-step instructions to run Azure Data API Builder in various environments like:
 * Local windows machine
 * Docker Desktop
