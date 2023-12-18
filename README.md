@@ -1,5 +1,7 @@
 # How to Run Azure Data API Builder (DAB) in various Hosting Environments
-[Azure Data API Builder](https://learn.microsoft.com/en-us/azure/data-api-builder/overview-to-data-api-builder?tabs=azure-sql) provides a capability to auto-generate APIs to expose data in database like MS SQL.
+[Azure Data API Builder](https://learn.microsoft.com/en-us/azure/data-api-builder/overview-to-data-api-builder?tabs=azure-sql) provides a capability to auto-generate REST and GraphQL API endpoints based on a database schema without writing an API application.
+
+Azure Data API Builder is open source and can be hosted on any platform.
 
 This repo provides step-by-step instructions to run Azure Data API Builder in various environments like:
 * Local windows machine
